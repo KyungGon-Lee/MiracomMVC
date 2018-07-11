@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <img id = "img1" width="800" height="400"><br>
+  <h1>영화 제목 : </h1>
+  <input type=text id=answer class="form-control-lg">
+  <button onclick=clickAnswer() class="btn btn-primary">answer</button><br><br>
+  <div id="msg1"></div>
+
+  <script>
+  var imgs = ["영화/내머리속의지우개.jpg",
+              "영화/내부자들.png",
+              "영화/말죽거리잔혹사.png",
+              "영화/베테랑.jpg",
+              "영화/신세계.jpg",
+              "영화/올드보이.jpg",
+              "영화/인셉션.jpg",
+              "영화/추격자.jpg",
+              "영화/타짜.jpg",
+              "영화/홀리데이.jpg"
+            ];
+  var answers = ["내머리속의지우개",
+                 "내부자들",
+                 "말죽거리잔혹사",
+                 "베테랑",
+                 "신세계",
+                 "올드보이",
+                 "인셉션",
+                 "추격자",
+                 "타짜",
+                 "홀리데이"
+                ];
+
+  var problems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  shuffle(problems);
+  var idx = 0;
+  document.getElementById("img1").src = imgs[problems[0]];
+   function clickAnswer(){
+      var answer = document.getElementById("answer").value;
+      if(answer == answers[problems[idx]]){
+        idx++;
+        document.getElementById("img1").src = imgs[problems[idx]];
+        document.getElementById("msg1").innerHTML = "와아앙 정답";
+        document.getElementById("answer").value = "";
+        document.getElementById("answer").focus();
+      }else{
+        document.getElementById("msg1").innerHTML = "ㅠㅠ";
+        document.getElementById("answer").value = "";
+        document.getElementById("answer").focus();
+      }
+  }
+
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+      j = Math.floor(Math.random() * i);
+      x = a[i - 1];
+      a[i - 1] = a[j];
+      a[j] = x;
+    }
+  }
+  </script>
+</html>
